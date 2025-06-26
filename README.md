@@ -1,8 +1,8 @@
 # Weather-Forecast-App
 ==================
 
-This is weather query app that can input city name and show weather detail of that city.
-Support mobile phone and tablet
+This is weather query application that you can input city name and it will show weather and temperature of that city.
+This App support mobile phone and tablet
 
 ## Screenshots
 ***Mobile Phone***
@@ -26,4 +26,4 @@ Support mobile phone and tablet
 * Kotlin Coroutines and Flow
 
 ## Instruction
-Make sure to put your OpenWeatherMap API key to parameter "API_KEY" at utils/Constant file.
+Make sure to put your OpenWeatherMap API key to parameter "API_KEY" at Constant.kt inside "utils" folder .
