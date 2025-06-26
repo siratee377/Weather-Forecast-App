@@ -6,8 +6,11 @@ Support mobile phone and tablet
 
 ## Screenshots
 ***Mobile Phone***
+
 ![Screenshot1](https://raw.githubusercontent.com/siratee377/Weather-Forecast-App/main/screenshot_phone.png)
+
 ***Tablet***
+
 ![Screenshot2](https://raw.githubusercontent.com/siratee377/Weather-Forecast-App/main/screenshot_tablet.png)
 
 ## Tech Stack
