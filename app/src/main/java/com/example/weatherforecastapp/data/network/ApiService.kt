@@ -3,13 +3,14 @@ package com.example.weatherforecastapp.data.network
 import com.example.weatherforecastapp.data.model.CurrentWeatherResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("weather?q={city_name}&appid={api_key}&units=metric")
+    @GET("weather")
     suspend fun getCurrentWeatherAPI(
-        @Path("city_name") cityName: String,
-        @Path("api_key") apiKey: String
+        @Query("city name") cityName: String,
+        @Query("API key") apiKey: String
     ): CurrentWeatherResponse
 
 }
