@@ -1,13 +1,12 @@
 package com.example.weatherforecastapp.domain.repository
 
-import com.example.weatherforecastapp.data.model.CurrentWeatherResponse
+import com.example.weatherforecastapp.domain.model.CurrentWeatherData
 
 interface Repository {
 
     suspend fun getCurrentWeatherAPI(
         lat: String,
-        lon: String,
-        apiKey: String
-    ): CurrentWeatherResponse
+        lon: String
+    ): CurrentWeatherData
 
 }

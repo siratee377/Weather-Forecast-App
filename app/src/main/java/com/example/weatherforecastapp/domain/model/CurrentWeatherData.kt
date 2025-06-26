@@ -1,8 +1,6 @@
-package com.example.weatherforecastapp.data.model
+package com.example.weatherforecastapp.domain.model
 
-import com.google.gson.annotations.SerializedName
-
-data class CurrentWeatherResponse(
+data class CurrentWeatherData(
     val coord: Coord,
     val weather: List<Weather>,
     val base: String,
@@ -32,17 +30,12 @@ data class CurrentWeatherResponse(
 
     data class Main(
         val temp: Double,
-        @SerializedName("feels_like")
         val feelsLike: Double,
-        @SerializedName("temp_min")
         val tempMin: Double,
-        @SerializedName("temp_max")
         val tempMax: Double,
         val pressure: Int,
         val humidity: Int,
-        @SerializedName("sea_level")
         val seaLevel: Int?,
-        @SerializedName("grnd_level")
         val grndLevel: Int?
     )
 
@@ -53,7 +46,6 @@ data class CurrentWeatherResponse(
     )
 
     data class Rain(
-        @SerializedName("1h")
         val oneHour: Double?
     )
 
