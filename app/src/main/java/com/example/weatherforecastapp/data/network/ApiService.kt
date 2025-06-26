@@ -6,11 +6,10 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("weather?lat={lat}&lon={lon}&appid={apiKey}")
+    @GET("weather?q={city_name}&appid={api_key}&units=metric")
     suspend fun getCurrentWeatherAPI(
-        @Path("lat") lat: String,
-        @Path("lon") lon: String,
-        @Path("apiKey") apiKey: String
+        @Path("city_name") cityName: String,
+        @Path("api_key") apiKey: String
     ): CurrentWeatherResponse
 
 }

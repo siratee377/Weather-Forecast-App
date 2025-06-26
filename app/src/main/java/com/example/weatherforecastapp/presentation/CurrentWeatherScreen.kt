@@ -36,7 +36,7 @@ fun CurrentWeatherScreen(
     val context = LocalContext.current
     val uiState by viewModel.currentWeatherState.collectAsState()
 
-    var text = remember { mutableStateOf("") }
+    var cityName = remember { mutableStateOf("") }
 
     Scaffold(
         modifier = Modifier.fillMaxSize()
@@ -48,15 +48,17 @@ fun CurrentWeatherScreen(
         ) {
             TextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = text.value,
-                onValueChange = { text.value = it },
+                value = cityName.value,
+                onValueChange = { cityName.value = it },
                 label = { Text("Please Enter City Name") },
                 placeholder = { Text("ex. bangkok, tokyo, beijing") },
                 singleLine = true
             )
 
             Button(
-                onClick = { /* Handle button click */ },
+                onClick = {
+                    viewModel.getProductDetailAPi(cityName.value)
+                },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth(),
@@ -97,7 +99,7 @@ fun CurrentWeatherScreen(
                                 .fillMaxSize()
                                 .padding(padding)
                         ) {
-
+                            Text(text = (uiState as CurrentWeatherState.Success).data?.main?.temp.toString())
                         }
                     }
                 }

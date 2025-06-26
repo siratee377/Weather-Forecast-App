@@ -10,12 +10,10 @@ import javax.inject.Inject
 class RepositoryImpl @Inject constructor(private val apiService: ApiService) : Repository {
 
     override suspend fun getCurrentWeatherAPI(
-        lat: String,
-        lon: String
+        cityName: String
     ): CurrentWeatherData {
         return apiService.getCurrentWeatherAPI(
-            lat = lat,
-            lon = lon,
+            cityName = cityName,
             apiKey = API_KEY
         ).toCurrentWeatherData()
     }

@@ -20,9 +20,9 @@ class CurrentWeatherViewModel @Inject constructor(
     val currentWeatherState: StateFlow<CurrentWeatherState?>
         get() = _currentWeatherState
 
-    fun getProductDetailAPi(lat: String, long: String) {
+    fun getProductDetailAPi(cityName: String) {
 
-        getCurrentWeatherUseCase.invoke(lat = lat, long = long).map {
+        getCurrentWeatherUseCase.invoke(cityName = cityName).map {
             when (it) {
                 is UiState.Loading -> {
                     _currentWeatherState.value = CurrentWeatherState.Loading

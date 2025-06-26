@@ -10,13 +10,13 @@ import kotlinx.coroutines.flow.flowOn
 import java.lang.Exception
 import javax.inject.Inject
 
-class GetCurrentWeatherUseCase @Inject constructor(private val repositoryImpl : RepositoryImpl)  {
+class GetCurrentWeatherUseCase @Inject constructor(private val repositoryImpl: RepositoryImpl) {
 
-    operator fun invoke(long : String, lat: String) : Flow<UiState<CurrentWeatherData>> = flow {
+    operator fun invoke(cityName: String): Flow<UiState<CurrentWeatherData>> = flow {
         emit(UiState.Loading())
         try {
-            emit(UiState.Success(data = repositoryImpl.getCurrentWeatherAPI(long,lat)))
-        }catch (e : Exception){
+            emit(UiState.Success(data = repositoryImpl.getCurrentWeatherAPI(cityName)))
+        } catch (e: Exception) {
             emit(UiState.Error(message = e.message.toString()))
         }
     }.flowOn(Dispatchers.IO)
