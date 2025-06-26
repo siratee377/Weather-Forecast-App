@@ -16,24 +16,36 @@ class CurrentWeatherViewModel @Inject constructor(
     private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase
 ) : ViewModel() {
 
-    private val _currentWeatherState = MutableStateFlow<CurrentWeatherState?>(null)
-    val currentWeatherState: StateFlow<CurrentWeatherState?>
-        get() = _currentWeatherState
+    private val _city = MutableStateFlow("")
+    val city: StateFlow<String> = _city
 
-    fun getProductDetailAPi(cityName: String) {
+    private val _uiState = MutableStateFlow<CurrentWeatherState>(CurrentWeatherState.Idle)
+    val uiState: StateFlow<CurrentWeatherState> = _uiState
 
-        getCurrentWeatherUseCase.invoke(cityName = cityName).map {
+    fun onCityChange(new: String) {
+        _city.value = new
+    }
+
+    fun fetchWeather() {
+        val query = _city.value.trim()
+
+        if (query.isEmpty()) {
+            _uiState.value = CurrentWeatherState.Error("Please enter a city name")
+            return
+        }
+
+        getCurrentWeatherUseCase.invoke(cityName = query).map {
             when (it) {
                 is UiState.Loading -> {
-                    _currentWeatherState.value = CurrentWeatherState.Loading
+                    _uiState.value = CurrentWeatherState.Loading
                 }
 
                 is UiState.Success -> {
-                    _currentWeatherState.value = CurrentWeatherState.Success(it.data)
+                    _uiState.value = CurrentWeatherState.Success(it.data)
                 }
 
                 is UiState.Error -> {
-                    _currentWeatherState.value = CurrentWeatherState.Error(it.message.orEmpty())
+                    _uiState.value = CurrentWeatherState.Error("Failed: ${it.message.orEmpty()}")
                 }
             }
         }.launchIn(viewModelScope)
