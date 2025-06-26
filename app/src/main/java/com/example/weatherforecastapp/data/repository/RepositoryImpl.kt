@@ -5,6 +5,7 @@ import com.example.weatherforecastapp.domain.mapper.toCurrentWeatherData
 import com.example.weatherforecastapp.domain.model.CurrentWeatherData
 import com.example.weatherforecastapp.domain.repository.Repository
 import com.example.weatherforecastapp.utils.Constant.API_KEY
+import com.example.weatherforecastapp.utils.Constant.UNIT
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(private val apiService: ApiService) : Repository {
@@ -14,6 +15,7 @@ class RepositoryImpl @Inject constructor(private val apiService: ApiService) : R
     ): CurrentWeatherData {
         return apiService.getCurrentWeatherAPI(
             cityName = cityName,
+            unit = UNIT,
             apiKey = API_KEY
         ).toCurrentWeatherData()
     }
