@@ -76,7 +76,7 @@ private fun PhoneMainContent(
             .padding(paddingValues)
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         WeatherInput(
             modifier = Modifier.fillMaxWidth(),
@@ -104,8 +104,7 @@ private fun TabletMainContent(
         modifier = Modifier
             .padding(paddingValues)
             .fillMaxSize()
-            .padding(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(24.dp)
+            .padding(16.dp)
     ) {
         WeatherInput(
             modifier = Modifier.weight(1f),
@@ -147,7 +146,7 @@ private fun WeatherInput(
             singleLine = true
         )
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(16.dp))
 
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally),
