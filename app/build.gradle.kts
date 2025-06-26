@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation)
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.gson)
     implementation(libs.kotlinx.serialization.json)
